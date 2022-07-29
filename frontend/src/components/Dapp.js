@@ -1,7 +1,7 @@
 import React from "react";
 
 // We'll use ethers to interact with the Ethereum network and our contract
-import { ethers } from "ethers";
+import { ethers } from "ethers"; //look up ethers docs -> save to hub
 
 // We import the contract's artifacts and address here, as we are going to be
 // using them with ethers
@@ -11,6 +11,7 @@ import contractAddress from "../contracts/contract-address.json";
 // All the logic of this dapp is contained in the Dapp component.
 // These other components are just presentational ones: they don't have any
 // logic. They just render HTML.
+//can I replace them with tailwind ?
 import { NoWalletDetected } from "./NoWalletDetected";
 import { ConnectWallet } from "./ConnectWallet";
 import { Loading } from "./Loading";
@@ -89,6 +90,8 @@ export class Dapp extends React.Component {
     }
 
     // If everything is loaded, we render the application.
+    //so my apps logic starts from here ? 
+    // and also the state will hold the appropriate values
     return (
       <div className="container p-4">
         <div className="row">
@@ -174,7 +177,7 @@ export class Dapp extends React.Component {
     // To connect to the user's wallet, we have to run this method.
     // It returns a promise that will resolve to the user's address.
     const [selectedAddress] = await window.ethereum.request({ method: 'eth_requestAccounts' });
-
+    //how do we know if window ethereum exists ?
     // Once we have the address, we can initialize the application.
 
     // First we check the network
@@ -208,7 +211,7 @@ export class Dapp extends React.Component {
   _initialize(userAddress) {
     // This method initializes the dapp
 
-    // We first store the user's address in the component's state
+    // We first store the user's address in the component's state *imprtant
     this.setState({
       selectedAddress: userAddress,
     });
